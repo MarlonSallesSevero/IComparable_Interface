@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*Faça um programa para ler um arquivo contendo nomes de pessoas (um nome por
+   linha), armazenando-os em uma lista. Depois, ordenar os dados dessa lista e mostra-los
+  ordenadamente na tela. Nota: o caminho do arquivo pode ser informado "hardcode".*/
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 namespace IComprableInterface
@@ -18,7 +22,7 @@ namespace IComprableInterface
                     {
                         list.Add(sr.ReadLine()); //Adicionando as linhas em uma posicao no vetor
                     }
-                    list.Sort();
+                    list.Sort(); //ordenando lista
                     foreach (var name in list)
                     {
                         Console.WriteLine(name);
@@ -27,14 +31,12 @@ namespace IComprableInterface
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
             finally
             {
                 string a = Console.ReadLine();
             }
-
         }
     }
 }
