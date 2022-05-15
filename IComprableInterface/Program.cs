@@ -1,37 +1,39 @@
-﻿/*Faça um programa para ler um arquivo contendo nomes de pessoas (um nome por
-   linha), armazenando-os em uma lista. Depois, ordenar os dados dessa lista e mostra-los
-  ordenadamente na tela. Nota: o caminho do arquivo pode ser informado "hardcode".*/
+﻿/*Faça um programa para ler um arquivo contendo funcionários (nome e salário) no
+formato .csv, armazenando-os em uma lista. Depois, ordenar a lista por nome e mostrar
+o resultado na tela. Nota: o caminho do arquivo pode ser informado "hardcode".
+*/
 
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Entities;
 namespace IComprableInterface
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            string path = @"C:\Windows\Temp\nomes.txt";
+            string path = @"C:\Windows\Temp\nomes.csv";
 
             try
             {
                 using (StreamReader sr = File.OpenText(path)) // Lendo o arquivo
                 {
-                    List<string> list = new List<string>();
+                    List<Employee> list = new List<Employee>();
                     while (!sr.EndOfStream)
                     {
-                        list.Add(sr.ReadLine()); //Adicionando as linhas em uma posicao no vetor
+                        list.Add(new Employee(sr.ReadLine())); //Adicionando as linhas em uma posicao no vetor
                     }
                     list.Sort(); //ordenando lista
-                    foreach (var name in list)
+                    foreach (Employee emplo in list)
                     {
-                        Console.WriteLine(name);
+                        Console.WriteLine(emplo);
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex);
             }
             finally
             {
